@@ -282,7 +282,6 @@ agent.turn(RIGHT_TURN)
 agent.move(UP, 2)
     agent.turn(RIGHT_TURN)
     agent.setItem(SPRUCE_DOOR, 64, 1)
-    agent.place(SPRUCE_DOOR)
     agent.move(UP, 1)
     agent.setItem(BLOCK_OF_QUARTZ, 64, 1)
     agent.place(DOWN)
@@ -291,7 +290,6 @@ agent.move(UP, 2)
     agent.move(DOWN, 1)
     agent.turn(RIGHT_TURN)
     agent.setItem(SPRUCE_DOOR, 64, 1)
-    agent.place(DOWN)
     agent.move(UP, 1)
     agent.setItem(BLOCK_OF_QUARTZ, 64, 1)
     agent.place(DOWN)
@@ -356,35 +354,31 @@ agent.setItem(NETHER_BRICK_SLAB, 64, 1)
     agent.turn(LEFT_TURN)
     agent.setItem(SEEDS, 64, 1)
     agent.setItem(BONE_MEAL, 64, 1)
-    for (let i = 0; i < 7; i++) {
+    for (let index = 0; index < 7; index++) {
         agent.move(FORWARD, 1)
         agent.destroy(DOWN)
     }
     agent.turn(LEFT_TURN)
-    agent.move(FORWARD,1)
+    agent.move(FORWARD, 1)
     agent.destroy(DOWN)
     agent.turn(LEFT_TURN)
-
-    for (let i = 0; i < 7; i++) {
+    for (let index = 0; index < 7; index++) {
         agent.move(FORWARD, 1)
         agent.destroy(DOWN)
-        
     }
     agent.turn(RIGHT_TURN)
-    agent.move(FORWARD,1)
+    agent.move(FORWARD, 1)
     agent.destroy(DOWN)
     agent.turn(RIGHT_TURN)
-    for (let i = 0; i < 7; i++) {
+    for (let index = 0; index < 7; index++) {
         agent.move(FORWARD, 1)
         agent.destroy(DOWN)
-        
-    } 
+    }
     agent.turn(RIGHT_TURN)
     agent.move(UP, 2)
-    agent.move(FORWARD,4)
-    agent.move(FORWARD,6)
-    agent.move(DOWN,2)
-
+    agent.move(FORWARD, 4)
+    agent.move(FORWARD, 6)
+    agent.move(DOWN, 2)
     for (let index = 0; index < 9; index++) {
         agent.setItem(SEEDS, 64, 1)
         agent.setItem(BONE_MEAL, 64, 2)
@@ -564,6 +558,7 @@ agent.setItem(NETHER_BRICK_SLAB, 64, 1)
     for (let index = 0; index < 8; index++) {
         agent.setItem(SEEDS, 64, 1)
         agent.setItem(BONE_MEAL, 64, 2)
+        agent.setItem(BONE_MEAL, 64, 3)
         agent.setSlot(1)
         agent.till(FORWARD)
         agent.place(FORWARD)
@@ -588,15 +583,64 @@ agent.setItem(NETHER_BRICK_SLAB, 64, 1)
         agent.turn(RIGHT_TURN)
         agent.move(FORWARD, 1)
     }
+    agent.setItem(SPRUCE_WOOD_STAIRS, 64, 4)
+    agent.turn(LEFT_TURN)
+    agent.turn(LEFT_TURN)
+    agent.move(FORWARD, 10)
+    agent.place(FORWARD)
     
+    for (let i = 0; i < 4; i++) {
+        agent.turn(RIGHT_TURN)
+        agent.move(FORWARD, 1)
+        agent.turn(LEFT_TURN)
+        agent.place(FORWARD)
+    }
+    agent.turn(LEFT_TURN)
+    agent.move(FORWARD, 1)
+    agent.turn(RIGHT_TURN)
+    agent.move(UP,1)
+    agent.move(FORWARD, 2)
+    agent.turn(LEFT_TURN)
+    agent.move(FORWARD,1)
+    agent.turn(RIGHT_TURN)
+    agent.setItem(IRON_DOOR, 64, 1)
+    agent.setSlot(1)
+    agent.place(FORWARD)
+    agent.turn(LEFT_TURN)
+    agent.move(FORWARD, 1)
+    agent.turn(RIGHT_TURN)
+    agent.place(FORWARD)//place second door.
+    agent.turn(LEFT_TURN)
+    agent.turn(LEFT_TURN)
+    agent.move(FORWARD,4)
+    agent.turn(RIGHT_TURN)
+    agent.move(UP,1)
+    agent.move(FORWARD,3)
+    agent.move(DOWN,2)
+    agent.turn(RIGHT_TURN)
+    agent.move(FORWARD,2)
+    agent.turn(LEFT_TURN)
+    agent.setSlot(1)
+    buildBase(8,3,WATER)//poolstart
+    agent.move(UP,1)
+    agent.setItem(WATER_BUCKET,64,1)//poolend
+    agent.setSlot(1)
+    agent.place(DOWN)
+    agent.move(UP, 1)
+    agent.turn(RIGHT_TURN)
+    agent.move(FORWARD,13)
+    agent.turn(LEFT_TURN)
+    agent.move(FORWARD, 3)
+    agent.move(DOWN,1)
+    agent.place(DOWN)//farm water
 })
 let originPosition: Position = null
 function makeWall (width: number, height: number, blockType: Block) {
     agent.setItem(blockType, width * height, 1)
     agent.setAssist(PLACE_ON_MOVE, true)
     
-    for (let index = 0; index < width; index++) {
-        const direction = index % 2 == 0 ? UP : DOWN
+    for (let index202 = 0; index202 < width; index202++) {
+        const direction = index202 % 2 == 0 ? UP : DOWN
         agent.move(direction, height - 1)
         agent.move(FORWARD, 1)
     }
@@ -605,8 +649,8 @@ function makeWall (width: number, height: number, blockType: Block) {
 function buildBase (width: number, length: number, blockType: Block) {
     agent.setAssist(PLACE_ON_MOVE, true)
     agent.setItem(blockType, width * length, 1)
-    for (let index2 = 0; index2 <= length - 1; index2++) {
-        const direction2 = index2 % 2 ? RIGHT_TURN : LEFT_TURN
+    for (let index222 = 0; index222 <= length - 1; index222++) {
+        const direction2 = index222 % 2 ? RIGHT_TURN : LEFT_TURN
         agent.move(FORWARD, width)
         agent.turn(direction2)
         agent.move(FORWARD, 1)
