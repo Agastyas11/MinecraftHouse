@@ -621,9 +621,9 @@ agent.setItem(NETHER_BRICK_SLAB, 64, 1)
     agent.move(FORWARD,2)
     agent.turn(LEFT_TURN)
     agent.setSlot(1)
-    buildBase(8,3,WATER)//poolstart
+    buildBase(8,3,ICE)//poolstart
     agent.move(UP,1)
-    agent.setItem(WATER_BUCKET,64,1)//poolend
+    agent.setItem(ICE,64,1)//poolend
     agent.setSlot(1)
     agent.place(DOWN)
     agent.move(UP, 1)
@@ -631,7 +631,7 @@ agent.setItem(NETHER_BRICK_SLAB, 64, 1)
     agent.move(FORWARD,13)
     agent.turn(LEFT_TURN)
     agent.move(FORWARD, 3)
-    agent.move(DOWN,1)
+    agent.move(DOWN,2)
     agent.place(DOWN)//farm water
 })
 let originPosition: Position = null
